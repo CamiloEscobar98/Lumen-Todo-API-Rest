@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('value', 25);
-            $table->string('slug', 5);
+            $table->string('slug', 15);
             $table->timestamps();
 
-            $table->unique('value', 'unique_value_countries');
-            $table->unique('slug', 'unique_slug_countries');
+            $table->unique('value', 'unique_value_categories');
+            $table->unique('slug', 'unique_slug_categories');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('categories');
     }
 };

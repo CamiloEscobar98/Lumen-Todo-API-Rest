@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique('value', 'unique_value_genders');
-            $table->unique('slug', 'unique_value_genders');
+            $table->unique('slug', 'unique_slug_genders');
         });
     }
 

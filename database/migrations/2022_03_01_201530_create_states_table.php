@@ -14,8 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('states', function (Blueprint $table) {
-            $table->id();
+            $table->smallIncrements('id');
+            $table->unsignedTinyInteger('country_id');
+            $table->string('value', 25);
+            $table->string('slug', 5);
             $table->timestamps();
+
+            $table->unique(['country_id', 'value', 'slug'], 'unique_states');
+            
+            $table->foreign('country_id', 'fk_country_states')->references('id')->on('countries')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
