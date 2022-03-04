@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 
 class Category extends Model
 {
+    use HasFactory;
     /**
      * The table associated with the model.
      *
@@ -52,17 +54,6 @@ class Category extends Model
     public function setSlugAttribute($value)
     {
         return $this->attributes['slug'] = Str::lower($value);
-    }
-
-    /**
-     * Get the Category's slug.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getSlugAttribute($value)
-    {
-        return Str::ucfirst($value);
     }
 
     /**

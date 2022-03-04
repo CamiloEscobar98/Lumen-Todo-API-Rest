@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->unique(['phone', 'country_id'], 'unique_phone_person');
 
-            $table->foreign('person_id', 'fk_phone_person_people')->references('uuid')->on('people')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('person_id', 'fk_person_phone_person')->references('uuid')->on('people')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('country_id', 'fk_country_phone_person')->references('id')->on('countries')->cascadeOnUpdate()->nullOnDelete();
         });
     }

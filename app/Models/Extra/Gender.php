@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Extra;
+namespace App\Models\Extra;
 
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Model;
@@ -63,7 +63,7 @@ class Gender extends Model
      */
     public function getSlugAttribute($value)
     {
-        return Str::ucfirst($value);
+        return Str::upper($value);
     }
 
     /**

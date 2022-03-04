@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 
 class Person extends Model
 {
+    use HasFactory;
 
     /**
      * The table associated with the model.
@@ -111,8 +113,32 @@ class Person extends Model
         return $this->attributes['private_email'] = Str::lower($value);
     }
 
+    /**
+     * Get the user which is being relationed with the Person.
+     * 
+     */
     public function user()
     {
-        return $this->hasOne(User::class, 'uuid', 'uuid');
+        return $this->hasOne(User::class, 'id', 'uuid');
+    }
+
+    /**
+     * Get the AddressPerson which is being relationed with the Person.
+     * 
+     * @return $this
+     */
+    public function addressPerson()
+    {
+        return $this->hasOne(AddressPerson::class, 'person_id', 'uuid');
+    }
+
+    /**
+     * Get the PhonePerson which is being relationed with the Person.
+     * 
+     * @return $this
+     */
+    public function phonePerson()
+    {
+        return $this->hasOne(PhonePerson::class, 'person_id', 'uuid');
     }
 }

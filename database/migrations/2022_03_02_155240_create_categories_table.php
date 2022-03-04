@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('value', 25);
-            $table->string('slug', 15);
+            $table->string('value', 50);
+            $table->string('slug', 25);
             $table->timestamps();
 
             $table->unique('value', 'unique_value_categories');
